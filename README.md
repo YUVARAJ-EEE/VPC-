@@ -1,96 +1,68 @@
-IAM Working Overview
+# VIRTUAL-MACHINES-
+EX 6: MOVING FILES BETWEEN VIRTUAL MACHINES
+# Name: YUVARAJ M
+# Register Number: 212224050062
 
-AIM
+Aim:
+To move the files between virtual machine.
+ You can move files between virtual machines in several ways:
+•	You can copy files using network utilities as you would between physical computers on your network. To do this between two virtual machine:
+•	Both virtual machines must be configured to allow access to your network.
+•	Any of the networking methods (host-only, bridged and NAT) are appropriate. 
+•	With host-only networking, you copy files from the virtual machines to the host and vice-versa, since host-only networking only allows the virtual machines see your host computer.
+•	With bridged networking or NAT enabled, you can copy files across your network between the virtual machines.
+•	You can create a shared drive, either a virtual disk or a raw partition, and mount the drive in each of the virtual machines.
+Procedure:
+		How to Enable File sharing in VirtualBox. 
+Step 1. Install Guest Additions on the Guest machine. 
+Step 2. Configure File Sharing on VirtualBox. 
+ 
+Step 1. Install Guest Additions on the Guest machine. 
+1. Start the Virtuabox Guest Machine (OS). 
+2. From Oracle's VM VirtualBox main menu, select Devices > Install Guest Additions *
 
-IAM Working Overview
+a. Open Windows Explorer
+b. Double click at the "CD Drive (X:) VirtualBox Guest additions" to explore its contents.
+		  
+![image](https://github.com/user-attachments/assets/d3dbb341-38c1-4f3e-92f7-0cfe1084e679)
 
-This repository provides a comprehensive overview of Identity and Access Management (IAM), focusing on its purpose, components, and implementation practices in cloud and enterprise environments. The aim is to educate developers, system admins, and security teams on IAM essentials and offer a hands-on guide for setting up and managing IAM policies.
+C.Right click at "VBoxWindowsAdditions" application and from the pop-up menu, choose "Run as administrator".
+ 
+![image](https://github.com/user-attachments/assets/35be1b73-df5c-445e-bb24-94d71f7898e4)
 
-Introduction
-Identity and Access Management (IAM) is a framework of policies, technologies, and practices designed to manage digital identities and control access to resources. IAM helps ensure the right individuals have the right access to resources at the right time. It is crucial for securing sensitive data and resources in any organization, especially those operating in a cloud environment.
-Objectives
+3.Press Next and then follow the on screen instructions to complete the Guest Additions installation.
+	 
+![image](https://github.com/user-attachments/assets/066c93ef-f2fa-40e8-a8f2-041ca2758db1)
 
-•	To understand the purpose and benefits of IAM
-•	To learn about the core components of IAM
-•	To gain hands-on experience setting up and managing IAM policies
-•	To explore best practices for enhancing security through IAM
+4. When the setup is completed, choose Finish and restart the Virtuabox guest machine.
+Step 2. Setup File Sharing on VirtualBox Guest Machine.
+1. From VirtualBox menu click Devices and choose Shared Folders -> Shared Folder Settings.
 
-Prerequisites
+![image](https://github.com/user-attachments/assets/c58d8e37-8a75-47ad-bdc8-800ff55b2ccf)
 
-Before diving into IAM, you should have a foundational understanding of:
-
-•	Cloud Services (AWS, Azure, Google Cloud)
-•	Basic Networking and Security Concepts
-•	Programming (Python, Bash, or any language preferred for API interactions)
-•	Version Control (Git for managing this project)
-
-Core Components of IAM
-
-IAM encompasses several core components that work together to provide secure access management:
-
-•	Identities: Represent users, roles, or services accessing resources. Identities can be internal users, external partners, or applications.
-•	Policies: Define permissions for each identity, specifying what actions they can perform on which resources.
-•	Roles: Enable resource-specific permissions that can be assumed by users or services, allowing temporary access as needed.
-•	Authentication: The process of verifying an identity, typically through credentials such as passwords or tokens.
-•	Authorization: Determines what an authenticated identity can access or modify, enforced through policies.
-
-IAM Best Practices
-
-1.	Use the Principle of Least Privilege: Limit permissions to the minimum necessary.
-2.	Enable Multi-Factor Authentication (MFA): Protect against unauthorized access.
-3.	Implement Role-Based Access Control (RBAC): Group permissions by roles to simplify management.
-4.	Regularly Audit and Monitor Access Logs: Stay aware of access patterns and detect suspicious activities.
-5.	Rotate and Manage Access Keys Carefully: Reduce risks by rotating keys frequently.
-
-Setup Guide
-
-1.	Configure IAM Roles and Policies
-
-•	Step 1: Create an IAM role with specific permissions for your users or applications.
-•	Step 2: Attach policies to roles, limiting permissions according to your needs.
-•	Step 3: Test access by assuming roles and attempting various actions.
-
-2.	Enable Multi-Factor Authentication (MFA)
-
-•	Step 1: Go to your IAM console and select your user account.
-•	Step 2: Choose "Security credentials" and follow instructions to enable MFA.
-
-3.	Set Up Identity Federation
-
-•	Step 1: Configure identity providers (IdP) like SAML or OpenID Connect for single sign-on.
-•	Step 2: Map IdP roles to IAM roles for seamless access control.
-
-4.	Monitor and Audit with CloudTrail
-
-•	Step 1: Enable logging of all IAM activity using services like AWS CloudTrail.
-•	Step 2: Regularly review logs to ensure compliance with security policies.
-
-Examples
-
-Here are a few basic examples of IAM commands and scripts:
-•	Creating a User:
-aws iam create-user --user-name NewUser
-•	Attaching a Policy to a User:
-aws iam attach-user-policy --user-name NewUser --policy-arn arn:aws:iam::aws:policy/ReadOnlyAccess
-•	Creating an Access Key for a User:
-aws iam create-access-key --user-name NewUser
+2. Click the Add new shared folder icon.
+ 
+<img width="983" height="641" alt="image" src="https://github.com/user-attachments/assets/b8072a07-8ae4-4e5b-9d1a-42200f3bc433" />
 
 
+3. Click the drop-down arrow and select Other.
+ 
+<img width="369" height="361" alt="image" src="https://github.com/user-attachments/assets/119ce507-c6c6-4a25-a22e-48b547af8fcb" />
 
 
+3. Locate and highlight (from the Host OS) the folder that you want to share between the VirtualBox Guest machine and the Host and click Select Folder. *
+* Note: To make your life easier, create a new folder for the file sharing, on the Host OS and give it with a recognizable name. (e.g. "Public")
+ 
+<img width="687" height="250" alt="image" src="https://github.com/user-attachments/assets/1d560bb8-70a8-40ac-ad4b-186c7b917c0d" />
 
 
-While IAM is essential for managing access control, it does have limitations:
-•	Complex policies can lead to unintended access if not configured carefully.
-•	Requires continuous auditing and updates as roles and permissions evolve.
-•	Proper training and understanding of IAM policies are critical for avoiding misconfigurations.
+4. Now, in the 'Add Share' options, type a name (if you want) at the 'Folder Name box, click the Auto Mount and the Make Permanent checkboxes and click OK twice to close the Shared Folder Settings.
+
+<img width="359" height="319" alt="image" src="https://github.com/user-attachments/assets/db271d69-bd2d-4ab0-879b-60bc021b357c" />
 
 
-Conclusion
-IAM is a foundational aspect of security in cloud environments, helping control and monitor access to resources effectively. By following best practices and regularly auditing IAM configurations, organizations can maintain robust access control, protecting their digital assets from unauthorized access.
+5. You 're done! To access the shared folder from the Guest OS, open Windows Explorer and under the 'Network locations' you should see a new network drive that corresponds to the shared folder on the Host OS.
 
+Result:
 
-
-
-
-
+Thus the virtual machine files are moved to another VM
